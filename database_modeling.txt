@@ -1,0 +1,5 @@
+- dominio produto
+	- nome
+	- preço
+	- descrição
+	- estaDisponivel
