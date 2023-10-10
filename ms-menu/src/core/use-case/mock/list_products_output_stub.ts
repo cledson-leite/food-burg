@@ -3,7 +3,7 @@ import { IListProductsOutput } from '../../../port/output/ilist_products_output'
 import { productFake } from './product-faker';
 
 export class ListProductsOutputStub implements IListProductsOutput {
-  async show(): Promise<Product[]> {
+  async list(): Promise<Product[]> {
     return Promise.resolve([productFake]);
   }
 }

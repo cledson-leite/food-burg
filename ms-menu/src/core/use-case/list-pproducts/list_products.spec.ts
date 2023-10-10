@@ -15,18 +15,18 @@ describe('List Products', () => {
     sut = new ListProducts(output);
   });
   it('Should call output correctly', async () => {
-    const showSpy = jest.spyOn(output, 'show');
+    const listSpy = jest.spyOn(output, 'list');
     sut.execute();
-    expect(showSpy).toHaveBeenCalled();
+    expect(listSpy).toHaveBeenCalled();
   });
   it('Should throw error 500 when receiving error', async () => {
     const error = faker.lorem.sentence(3);
-    jest.spyOn(output, 'show').mockRejectedValueOnce(new Error(error) as never);
+    jest.spyOn(output, 'list').mockRejectedValueOnce(new Error(error) as never);
     const promise = sut.execute();
     await expect(promise).rejects.toThrowError(error);
   });
   it('Should throw error 404 in case of receiving an empty list', async () => {
-    jest.spyOn(output, 'show').mockResolvedValueOnce([] as never);
+    jest.spyOn(output, 'list').mockResolvedValueOnce([] as never);
     const promise = sut.execute();
     await expect(promise).rejects.toThrowError('Produto não encontrado');
   });

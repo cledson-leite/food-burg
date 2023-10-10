@@ -17,8 +17,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "pretest:e2e": "cross-env ENV=test yarn clean:db:test && cross-env ENV=test yarn typeorm:migrate:up",
-    "test:e2e": "cross-env ENV=test jest --config ./test/jest-e2e.json --passWithNoTests",
-    "prisma:migrate": "npx prisma migrate dev "
+    "test:e2e": "cross-env ENV=test jest --config ./test/jest-e2e.json --passWithNoTests"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.1.0",
@@ -59,6 +58,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.5.0",
+    "jest-mock-extended": "2.0.4",
     "prettier": "^3.0.0",
     "prisma": "^5.4.0",
     "source-map-support": "^0.5.21",
@@ -81,9 +81,16 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!app.*.(t|j)s",
+      "!**/**/mock/**/*.(t|j)s",
+      "!**/**/entity/*.(t|j)s",
+      "!**/**/database/*.(t|j)s",
+      "!**/**/dto/*.(t|j)s",
+      "!main.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": ["<rootDir>/adapter/mock/database/singleton.ts"]
   }
 }

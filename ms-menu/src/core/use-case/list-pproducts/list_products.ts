@@ -5,7 +5,7 @@ import { Product } from '../../entity/product';
 export class ListProducts implements IListProducts {
   constructor(private readonly output: IListProductsOutput) {}
   async execute(): Promise<Product[]> {
-    const result = await this.output.show();
+    const result = await this.output.list();
     if (!result.length) throw new Error('Produto não encontrado');
     return result;
   }
