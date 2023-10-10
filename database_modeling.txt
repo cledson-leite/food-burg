@@ -1,0 +1,36 @@
+- dominio produto
+	- nome
+	- preço
+	- descrição
+	- departamento
+	- categoria
+	- status
+	- estaDisponivel
+
+- dominio mesa
+	- numero
+	- pessoas
+	- cover
+	- estaAberta
+
+- dominio garçons
+	- matricula
+	- praça
+
+- dominio pedido
+	- mesa
+	- garçon
+	- cover
+	- cozinha
+	   - produtos
+	-bar
+	   - produtos
+	- status
+	- sub-total
+
+- dominio usuario
+	- nome
+	- matricula
+	- senha
+	- departamento
+	
