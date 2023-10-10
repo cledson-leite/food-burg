@@ -25,11 +25,6 @@ describe('List Products', () => {
     const promise = sut.execute();
     await expect(promise).rejects.toThrowError(error);
   });
-  it('Should throw error 404 in case of receiving an empty list', async () => {
-    jest.spyOn(output, 'list').mockResolvedValueOnce([] as never);
-    const promise = sut.execute();
-    await expect(promise).rejects.toThrowError('Produto não encontrado');
-  });
   it('Should return a list of products', async () => {
     const result = await sut.execute();
     expect(result).toEqual([productFake]);

@@ -1,6 +1,8 @@
-import { IListProductsOutput } from '../../port/output/ilist_products_output';
-import { prismaMock } from '../mock/database/singleton';
+import { productFake } from '../../../core/use-case/mock/product-faker';
+import { IListProductsOutput } from '../../../port/output/ilist_products_output';
+import { prismaMock } from '../../mock/database/singleton';
 import { ListProductsInfra } from './list-product-infra';
+import { response } from '../mock/response-prisma-fake';
 
 describe('List Products Infra', () => {
   let sut: IListProductsOutput;
@@ -21,5 +23,10 @@ describe('List Products Infra', () => {
     prismaMock.product.findMany.mockResolvedValueOnce([]);
     const result = await sut.list();
     expect(result).toEqual([]);
+  });
+  it('Should return a list of product dto', async () => {
+    prismaMock.product.findMany.mockResolvedValueOnce([response]);
+    const result = await sut.list();
+    expect(result).toEqual([productFake]);
   });
 });
