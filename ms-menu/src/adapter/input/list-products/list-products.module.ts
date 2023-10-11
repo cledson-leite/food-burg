@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ListProducts } from '../../../core/use-case/list-pproducts/list_products';
+import { ListProducts } from '../../../core/use-case/list-products/list_products';
 import { ListProductsService } from './list-products.service';
 import { ListProductsController } from './list-products.controller';
 import { PrismaClient } from '@prisma/client';

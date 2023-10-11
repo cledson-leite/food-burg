@@ -1,7 +1,7 @@
 import { Category, Department, Product, Status } from '../core/entity/product';
 
 export class ProductDto implements Product {
-  id: string;
+  id: number;
   name: string;
   description: string;
   price: number;
@@ -17,7 +17,7 @@ export class ProductBuilder {
     this.product = new ProductDto();
   }
 
-  id(value: string): this {
+  id(value: number): this {
     this.product.id = value;
     return this;
   }

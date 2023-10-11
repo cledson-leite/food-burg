@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { Product } from '../../entity/product';
 
 export const productFake: Product = {
-  id: faker.string.uuid(),
+  id: faker.number.int(),
   name: faker.commerce.productName(),
   description: faker.commerce.productDescription(),
   price: Number(faker.commerce.price()),

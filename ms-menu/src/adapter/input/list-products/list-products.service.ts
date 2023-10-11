@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { IListProducts } from '../../../port/input/ilist-products';
 
 @Injectable()
@@ -8,6 +8,8 @@ export class ListProductsService {
     private readonly input: IListProducts,
   ) {}
   async handle() {
-    return await this.input.execute();
+    const result = await this.input.execute();
+    if (!result?.length) throw new NotFoundException('Produto não encontrado');
+    return result;
   }
 }

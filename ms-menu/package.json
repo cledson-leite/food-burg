@@ -16,8 +16,7 @@
     "test": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "pretest:e2e": "cross-env ENV=test yarn clean:db:test && cross-env ENV=test yarn typeorm:migrate:up",
-    "test:e2e": "cross-env ENV=test jest --config ./test/jest-e2e.json --passWithNoTests"
+    "test:e2e": " jest --config ./test/jest-e2e.json --passWithNoTests --watch"
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.1.0",
