@@ -1,12 +1,13 @@
-import { Controller, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpStatus } from '@nestjs/common';
 import { Response } from '../../../dto/response-dto';
 import { ProductDto } from '../../../dto/product-dto';
 import { ListProductsService } from './list-products.service';
 
-@Controller('list-products')
+@Controller()
 export class ListProductsController {
   constructor(private readonly service: ListProductsService) {}
 
+  @Get()
   async get(): Promise<Response<ProductDto[]>> {
     try {
       const result = await this.service.handle();
