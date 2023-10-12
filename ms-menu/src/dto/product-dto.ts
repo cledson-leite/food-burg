@@ -1,13 +1,29 @@
+import { IsNumber, IsString, IsBoolean, IsEnum } from 'class-validator';
 import { Category, Department, Product, Status } from '../core/entity/product';
 
 export class ProductDto implements Product {
+  @IsNumber()
   id?: number;
+
+  @IsString()
   name: string;
+
+  @IsString()
   description: string;
+
+  @IsNumber()
   price: number;
+
+  @IsBoolean()
   isAvailable: boolean;
+
+  @IsEnum(Category)
   category: Category;
+
+  @IsEnum(Department)
   department: Department;
+
+  @IsEnum(Status)
   status: Status;
 }
 export class ProductBuilder {
