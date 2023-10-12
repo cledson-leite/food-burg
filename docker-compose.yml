@@ -9,6 +9,13 @@ services:
       - 5432:5432
     networks:
       - ms-menu
+  cache:
+    image: redis
+    command: redis-server --appendonly yes
+    ports:
+      - 6379:6379
+    networks:
+      - ms-menu
 
 networks: 
     ms-menu:

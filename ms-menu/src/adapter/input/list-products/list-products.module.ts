@@ -7,15 +7,27 @@ import { DatabaseService } from '../../../database/database.service';
 import { IListProducts } from '../../../port/input/ilist-products';
 import { IListProductsOutput } from '../../../port/output/ilist_products_output';
 import { ListProductsInfra } from '../../output/list-product/list-product-infra';
+import { CACHE_MANAGER, CacheModule } from '@nestjs/cache-manager';
+import { redisStore } from 'cache-manager-redis-yet';
 
 @Module({
+  imports: [
+    CacheModule.register({
+      store: redisStore,
+      host: 'localhost',
+      port: 6379,
+      ttl: 600,
+      isGlobal: true,
+    }),
+  ],
   controllers: [ListProductsController],
   providers: [
     ListProductsService,
     {
       provide: ListProductsService,
-      useFactory: (input: IListProducts) => new ListProductsService(input),
-      inject: ['input'],
+      useFactory: (input: IListProducts, cache: any) =>
+        new ListProductsService(input, cache),
+      inject: ['input', CACHE_MANAGER],
     },
     {
       provide: 'input',
