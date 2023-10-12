@@ -7,6 +7,5 @@ export const productFake: Product = {
   price: Number(faker.commerce.price()),
   category: faker.number.int({ min: 0, max: 7 }),
   department: faker.number.int({ min: 0, max: 1 }),
-  status: faker.number.int({ min: 0, max: 4 }),
   isAvailable: faker.datatype.boolean(),
 };

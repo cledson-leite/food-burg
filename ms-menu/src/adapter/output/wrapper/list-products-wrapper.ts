@@ -11,7 +11,6 @@ export class WrapperListProduct {
       .isAvailable(json.isAvailable)
       .category(json.category)
       .department(json.department)
-      .status(json.status)
       .builder();
   }
 }

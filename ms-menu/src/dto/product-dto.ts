@@ -1,5 +1,5 @@
 import { IsNumber, IsString, IsBoolean, IsEnum } from 'class-validator';
-import { Category, Department, Product, Status } from '../core/entity/product';
+import { Category, Department, Product } from '../core/entity/product';
 
 export class ProductDto implements Product {
   @IsNumber()
@@ -22,9 +22,6 @@ export class ProductDto implements Product {
 
   @IsEnum(Department)
   department: Department;
-
-  @IsEnum(Status)
-  status: Status;
 }
 export class ProductBuilder {
   private product = new ProductDto();
@@ -60,11 +57,6 @@ export class ProductBuilder {
 
   department(value: Department): this {
     this.product.department = value;
-    return this;
-  }
-
-  status(value: Status): this {
-    this.product.status = value;
     return this;
   }
 

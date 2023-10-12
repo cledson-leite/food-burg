@@ -6,7 +6,6 @@ export interface Product {
   readonly isAvailable: boolean;
   readonly category: Category;
   readonly department: Department;
-  readonly status: Status;
 }
 
 export enum Category {
@@ -23,12 +22,4 @@ export enum Category {
 export enum Department {
   KITCHEN,
   DRINK,
-}
-
-export enum Status {
-  REQUESTED,
-  PREPARATION,
-  READY,
-  DELIVERED,
-  CANCELED,
 }
