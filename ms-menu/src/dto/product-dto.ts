@@ -1,7 +1,7 @@
 import { Category, Department, Product, Status } from '../core/entity/product';
 
 export class ProductDto implements Product {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   price: number;

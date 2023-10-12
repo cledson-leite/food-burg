@@ -1,17 +1,17 @@
 import { faker } from '@faker-js/faker';
 
-import { IListProductsOutput } from '../../../port/output/ilist_products_output';
+import { IListService } from '../../../port/output/ilist_service';
 import { ListProducts } from './list_products';
-import { ListProductsOutputStub } from '../mock/list_products_output_stub';
+import { ListServiceStub } from '../mock/list_service_stub';
 import { productFake } from '../mock/product-faker';
 import { IListProducts } from '../../../port/input/ilist-products';
 
 describe('List Products', () => {
-  let output: IListProductsOutput;
+  let output: IListService;
   let sut: IListProducts;
 
   beforeEach(() => {
-    output = new ListProductsOutputStub();
+    output = new ListServiceStub();
     sut = new ListProducts(output);
   });
   it('Should call output correctly', async () => {

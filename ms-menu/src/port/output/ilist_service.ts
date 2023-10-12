@@ -1,5 +1,5 @@
 import { Product } from '../../core/entity/product';
 
-export interface IListProductsOutput {
+export interface IListService {
   list(): Promise<Product[]>;
 }

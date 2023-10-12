@@ -1,8 +1,8 @@
 import { Product } from '../../entity/product';
-import { IListProductsOutput } from '../../../port/output/ilist_products_output';
+import { IListService } from '../../../port/output/ilist_service';
 import { productFake } from './product-faker';
 
-export class ListProductsOutputStub implements IListProductsOutput {
+export class ListServiceStub implements IListService {
   async list(): Promise<Product[]> {
     return Promise.resolve([productFake]);
   }

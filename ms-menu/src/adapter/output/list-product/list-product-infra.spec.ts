@@ -1,11 +1,11 @@
 import { productFake } from '../../../core/use-case/mock/product-faker';
-import { IListProductsOutput } from '../../../port/output/ilist_products_output';
+import { IListService } from '../../../port/output/ilist_service';
 import { prismaMock } from '../../mock/database/singleton';
 import { ListProductsInfra } from './list-product-infra';
 import { response } from '../mock/response-prisma-fake';
 
 describe('List Products Infra', () => {
-  let sut: IListProductsOutput;
+  let sut: IListService;
 
   beforeEach(() => {
     sut = new ListProductsInfra(prismaMock);

@@ -5,7 +5,7 @@ import { ListProductsController } from './list-products.controller';
 import { PrismaClient } from '@prisma/client';
 import { DatabaseService } from '../../../database/database.service';
 import { IListProducts } from '../../../port/input/ilist-products';
-import { IListProductsOutput } from '../../../port/output/ilist_products_output';
+import { IListService } from '../../../port/output/ilist_service';
 import { ListProductsInfra } from '../../output/list-product/list-product-infra';
 import { CACHE_MANAGER, CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
@@ -31,7 +31,7 @@ import { redisStore } from 'cache-manager-redis-yet';
     },
     {
       provide: 'input',
-      useFactory: (output: IListProductsOutput) => new ListProducts(output),
+      useFactory: (output: IListService) => new ListProducts(output),
       inject: ['output'],
     },
     {
